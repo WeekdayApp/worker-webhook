@@ -5,7 +5,7 @@
   "main": "sender.js",
   "scripts": {
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "tsc": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",

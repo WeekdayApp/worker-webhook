@@ -1,5 +1,5 @@
 import { SQSHandler, SQSMessageAttributes } from 'aws-lambda';
-import * as axios from 'axios'
+import axios from 'axios'
 
 const receiver: SQSHandler = async (event) => {
   try {
@@ -15,6 +15,7 @@ const receiver: SQSHandler = async (event) => {
       await axios.post(`${outgoing}?token=${token}`, payload, {
         headers: { 'Content-Type': 'application/json' },
       })
+    }
   } catch (error) {
     console.log(error);
   }
