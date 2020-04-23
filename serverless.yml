@@ -1,5 +1,5 @@
 service:
-  name: yack-worker-image
+  name: yack-worker-webhook
 
 plugins:
   - serverless-webpack

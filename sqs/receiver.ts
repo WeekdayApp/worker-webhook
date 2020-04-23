@@ -1,13 +1,20 @@
 import { SQSHandler, SQSMessageAttributes } from 'aws-lambda';
+import * as axios from 'axios'
 
 const receiver: SQSHandler = async (event) => {
   try {
     for (const record of event.Records) {
-      const messageAttributes: SQSMessageAttributes = record.messageAttributes;
+      console.log('ATTR: ', record.messageAttributes);
+      console.log('BODY: ', record.body);
 
-      console.log('Attributtes: ', messageAttributes);
-      console.log('Body: ', record.body);
-    }
+      const messageAttributes: SQSMessageAttributes = record.messageAttributes;
+      const outgoing: string = messageAttributes['outgoing'].stringValue;
+      const token: string = messageAttributes['token'].stringValue;
+      const payload: any = JSON.parse(messageAttributes['payload'].stringValue);
+
+      await axios.post(`${outgoing}?token=${token}`, payload, {
+        headers: { 'Content-Type': 'application/json' },
+      })
   } catch (error) {
     console.log(error);
   }

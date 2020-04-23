@@ -8,8 +8,10 @@
     "tsc": "tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "aws-lambda": "^0.1.2",
     "aws-sdk": "^2.553.0",
+    "axios": "^0.19.2",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
